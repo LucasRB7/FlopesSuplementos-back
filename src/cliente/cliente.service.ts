@@ -1,9 +1,17 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { Repository } from 'typeorm';
+import { ClienteEntity } from './cliente.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+
 
 @Injectable()
 export class ClienteService {
+    constructor(
+        @InjectRepository(ClienteEntity)
+        private readonly clienteRepository: Repository<ClienteEntity>
+    ){}
 
-    infor(){
-        return 'Ok, chamando...'
+    async find(){
+        return this.clienteRepository.find();
     }
 }

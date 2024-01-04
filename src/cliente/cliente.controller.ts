@@ -10,6 +10,6 @@ export class ClienteController {
 
     @Get()
     findall(){
-            return this.clienteService.infor()
+            return this.clienteService.find()
     }
 }

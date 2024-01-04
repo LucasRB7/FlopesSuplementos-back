@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ClienteService } from './cliente/cliente.service';
 import { ClienteModule } from './cliente/cliente.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -16,9 +15,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       database: process.env.DB_DATABASE,
       username: process.env.DB_USER,
       password: process.env.DB_PASS,
+      entities: [__dirname + '/**/*.entity{.js,.ts  }']
     })
     ,ClienteModule],
   controllers: [AppController],
-  providers: [AppService, ClienteService],
+  providers: [AppService],
 })
 export class AppModule {}
