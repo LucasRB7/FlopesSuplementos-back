@@ -17,9 +17,9 @@ export class CategoriasController {
     return this.categoriasService.findAll();
   }
 
-  @Get('/:id')
-  findOne(@Param('id') id: string) {
-    return this.categoriasService.findOne(+id);
+  @Get('/:table')
+  findOne(@Param('table') table: string) {
+    return this.categoriasService.findOne(table);
   }
 
   @Patch('/update/:id')

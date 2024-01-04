@@ -20,12 +20,17 @@ export class CategoriasService {
     return await this.categoriaRepo.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} categoria`;
+  async findOne(table: string) {
+    return await this.categoriaRepo.createQueryBuilder('cat')
+    .select(
+      'cat.categoria_nome'
+      )
+    .where('cat.categoria_nome = :table',{table})
+    .getRawMany();
   }
 
-  update(id: number, updateCategoriaDto: UpdateCategoriaDto) {
-    return `This action updates a #${id} categoria`;
+  async update(id: number, updateCategoriaDto: UpdateCategoriaDto) {
+    return await this.categoriaRepo.update(id,updateCategoriaDto)
   }
 
   async remove(id: number) {
