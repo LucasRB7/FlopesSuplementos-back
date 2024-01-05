@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProdutoModule } from './produto/produto.module';
 import { CategoriasModule } from './categorias/categorias.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -19,7 +20,7 @@ import { CategoriasModule } from './categorias/categorias.module';
       password: process.env.DB_PASS,
       entities: [__dirname + '/**/*.entity{.js,.ts  }']
     })
-    ,ClienteModule, ProdutoModule, CategoriasModule],
+    ,ClienteModule, ProdutoModule, CategoriasModule, UsersModule],
   controllers: [AppController],
   providers: [AppService],
 })
