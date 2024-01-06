@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { INestApplication, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ClienteModule } from './cliente/cliente.module';
@@ -7,6 +7,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProdutoModule } from './produto/produto.module';
 import { CategoriasModule } from './categorias/categorias.module';
 import { UsersModule } from './users/users.module';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+
 
 @Module({
   imports: [
