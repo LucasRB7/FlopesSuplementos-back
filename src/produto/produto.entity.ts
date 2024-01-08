@@ -14,10 +14,10 @@ export class ProdutoEntity{
     @Column()
     quantidade:number
 
-    @Column()
+    @Column({type:"float"})
     preco_compra:number
 
-    @Column()
+    @Column({type:"float"})
     preco_venda:number
 
     @Column()
