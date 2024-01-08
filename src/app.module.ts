@@ -8,6 +8,7 @@ import { ProdutoModule } from './produto/produto.module';
 import { CategoriasModule } from './categorias/categorias.module';
 import { UsersModule } from './users/users.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { VendaParcialModule } from './venda-parcial/venda-parcial.module';
 
 
 @Module({
@@ -22,7 +23,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
       password: process.env.DB_PASS,
       entities: [__dirname + '/**/*.entity{.js,.ts  }']
     })
-    ,ClienteModule, ProdutoModule, CategoriasModule, UsersModule],
+    ,ClienteModule, ProdutoModule, CategoriasModule, UsersModule, VendaParcialModule],
   controllers: [AppController],
   providers: [AppService],
 })
