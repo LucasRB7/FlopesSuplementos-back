@@ -52,9 +52,9 @@ export class PagamentoParceladoService {
     return this.pagamentoParceladoRepo.find()
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} pagamentoParcelado`;
-  }
+  // findOne(id: number) {
+  //   return `This action returns a #${id} pagamentoParcelado`;
+  // }
 
   update(id: number, pagamentoParceladoDto: PagamentoParceladoDto) {
     return `This action updates a #${id} pagamentoParcelado`;

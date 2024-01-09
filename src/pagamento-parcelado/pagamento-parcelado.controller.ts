@@ -23,10 +23,10 @@ export class PagamentoParceladoController {
     return this.pagamentoParceladoService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.pagamentoParceladoService.findOne(+id);
-  }
+  // @Get(':id')
+  // findOne(@Param('id') id: string) {
+  //   return this.pagamentoParceladoService.findOne(+id);
+  // }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() pagamentoParceladoDto: PagamentoParceladoDto) {
