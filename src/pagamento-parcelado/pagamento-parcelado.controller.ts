@@ -14,7 +14,7 @@ export class PagamentoParceladoController {
       pagamentoParceladoDto.id_venda_ref,
       pagamentoParceladoDto.valor,
       pagamentoParceladoDto.parcela,
-      new Date(pagamentoParceladoDto.vencimento)
+      pagamentoParceladoDto.vencimento
     )
   }
 

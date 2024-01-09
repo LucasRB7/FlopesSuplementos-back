@@ -11,20 +11,36 @@ export class PagamentoParceladoService {
     private readonly pagamentoParceladoRepo: Repository<PagamentoParceladoEntity>
   ){}
 
-  create(pagamentoParceladoDtoAny: any) {
-    return this.pagamentoParceladoRepo.save(pagamentoParceladoDtoAny)
+  create(pagamentoParceladoDto: any) {
+    return this.pagamentoParceladoRepo.save(pagamentoParceladoDto)
   }
-  async gerarParcelas(id_venda_ref:number, valor:number, parcela:number, vencimento: Date){
+  async gerarParcelas(id_venda_ref:number, valor:number, parcela:number, vencimento: string){
     const valorParcela = valor / parcela;
+   
+    function incrementarMes(dataString: string, numeroMeses:number) {
+      const partes = dataString.split('/');
+      const dia = parseInt(partes[0], 10);
+      const mes = parseInt(partes[1], 10) - 1; // -1 porque os meses em JavaScript começam do 0
+      const ano = parseInt(partes[2], 10);
+    
+      const data = new Date(ano, mes, dia);
+      data.setMonth(data.getMonth() + numeroMeses);
+    
+      const diaFinal = ('0' + data.getDate()).slice(-2);
+      const mesFinal = ('0' + (data.getMonth() + 1)).slice(-2); // +1 porque queremos o mês no formato humano (1-12)
+      const anoFinal = data.getFullYear();
+    
+      return `${diaFinal}/${mesFinal}/${anoFinal}`;
+    }
 
     for (let i = 0; i < parcela ; i++){
       const parcela = new PagamentoParceladoDto();
+
       parcela.id_venda_ref = id_venda_ref;
       parcela.parcela = i + 1
       parcela.valor = valorParcela;
       parcela.status = 'Pendente';
-      parcela.vencimento = new Date(vencimento)
-      parcela.vencimento.setMonth(parcela.vencimento.getMonth() + 1);
+      parcela.vencimento = incrementarMes(vencimento, i)
 
       await this.create(parcela)
     }

@@ -18,6 +18,6 @@ export class PagamentoParceladoEntity {
     @Column()
     status:string
 
-    @Column()
+    @Column({type:'float'})
     valor:number
 }
