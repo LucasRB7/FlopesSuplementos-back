@@ -9,6 +9,8 @@ import { CategoriasModule } from './categorias/categorias.module';
 import { UsersModule } from './users/users.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { VendaParcialModule } from './venda-parcial/venda-parcial.module';
+import { VendaFinalModule } from './venda-final/venda-final.module';
+import { PagamentoParceladoModule } from './pagamento-parcelado/pagamento-parcelado.module';
 
 
 @Module({
@@ -23,7 +25,7 @@ import { VendaParcialModule } from './venda-parcial/venda-parcial.module';
       password: process.env.DB_PASS,
       entities: [__dirname + '/**/*.entity{.js,.ts  }']
     })
-    ,ClienteModule, ProdutoModule, CategoriasModule, UsersModule, VendaParcialModule],
+    ,ClienteModule, ProdutoModule, CategoriasModule, UsersModule, VendaParcialModule, VendaFinalModule, PagamentoParceladoModule],
   controllers: [AppController],
   providers: [AppService],
 })
